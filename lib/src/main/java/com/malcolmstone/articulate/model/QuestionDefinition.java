@@ -15,4 +15,8 @@ public class QuestionDefinition {
     public Category getCategory() {
         return category;
     }
+
+    public String getDescription() {
+        return description;
+    }
 }

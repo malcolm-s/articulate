@@ -9,18 +9,19 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class GameStartActivity extends AppCompatActivity {
-    public static final String NUMBER_PLAYERS_MESSAGE = "NUMBER_PLAYERS";
-    public static final String NUMBER_ROUNDS_MESSAGE = "NUMBER_ROUNDS";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_start);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class GameStartActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.fab)
-    private void goRoundActivity(View view) {
+    public void goRoundActivity(View view) {
         Intent intent = new Intent(this, GameRoundActivity.class);
         startActivity(intent);
     }
