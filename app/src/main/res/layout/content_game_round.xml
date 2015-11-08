@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.malcolmstone.articulate.GameRoundActivity"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard"
+        card_view:cardElevation="@dimen/standard_quarter">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:id="@+id/question_timer"
+            android:progress="0"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/standard"
+        android:layout_marginRight="@dimen/standard"
+        android:id="@+id/questions_card"
+        card_view:cardElevation="@dimen/standard_quarter">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/questions_list"></ListView>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
