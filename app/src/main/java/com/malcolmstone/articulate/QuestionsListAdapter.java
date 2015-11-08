@@ -15,24 +15,31 @@ import com.malcolmstone.articulate.model.QuestionDefinition;
 public class QuestionsListAdapter extends ArrayAdapter<QuestionDefinition> {
     private QuestionDefinition[] questionDefinitions;
 
-    public QuestionsListAdapter(Context context, QuestionDefinition[] questionDefinitions) {
-        super(context, -1, questionDefinitions);
-
-        this.questionDefinitions = questionDefinitions;
+    public QuestionsListAdapter(Context context) {
+        super(context, -1, new QuestionDefinition[0]);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View questionsView = getLayoutInflater().inflate(R.layout.question_view, parent, false);
         QuestionDefinition questionDefinition = questionDefinitions[position];
 
-        ((TextView) questionsView.findViewById(R.id.category)).setText(questionDefinition.getCategory().getName());
-        ((TextView) questionsView.findViewById(R.id.description)).setText(questionDefinition.getDescription());
+        if (convertView != null) {
+            return bindViewData(convertView, questionDefinition);
+        } else {
+            View questionsView = getLayoutInflater().inflate(R.layout.question_view, parent, false);
 
-        return questionsView;
+            return bindViewData(questionsView, questionDefinition);
+        }
     }
 
     private LayoutInflater getLayoutInflater() {
         return (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    private View bindViewData(View view, QuestionDefinition questionDefinition) {
+        ((TextView) view.findViewById(R.id.category)).setText(questionDefinition.getCategory().getName());
+        ((TextView) view.findViewById(R.id.description)).setText(questionDefinition.getDescription());
+
+        return view;
     }
 }

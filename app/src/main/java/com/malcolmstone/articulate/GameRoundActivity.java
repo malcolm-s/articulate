@@ -13,7 +13,9 @@ import com.malcolmstone.articulate.model.QuestionDefinition;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class GameRoundActivity extends AppCompatActivity {
+public class GameRoundActivity extends AppCompatActivity implements GameRoundPresenter.GameRoundInterface {
+    private QuestionsListAdapter adapter;
+
     @Bind(R.id.questions_list)
     ListView questionsList;
 
@@ -24,12 +26,7 @@ public class GameRoundActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        QuestionsListAdapter adapter = new QuestionsListAdapter(this,
-                new QuestionDefinition[]{
-                        new QuestionDefinition(new Category("category"), "definition"),
-                        new QuestionDefinition(new Category("category"), "definition"),
-                });
-
+        this.adapter = new QuestionsListAdapter(this);
         questionsList.setAdapter(adapter);
     }
 }
